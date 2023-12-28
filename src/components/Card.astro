@@ -5,14 +5,14 @@ interface Props {
 }
 
 const { screenshot } = Astro.props;
-const { Content, headings } = await screenshot.render();
+const { Content } = await screenshot.render();
 
 ---
 <div class="border-2 border-t-slate-100 border-l-slate-100 border-r-slate-500 border-b-slate-500 flex gap-2 flex-wrap p-1">
-	<div class="basis-2/5">
-		<img src={screenshot.data.image.src} />
+	<div class="basis-2/5 grow">
+		<img src={screenshot.data.image.src} loading="lazy" />
 	</div>
-	<div class="prose prose-stone">
+	<div class="basis-3/5 prose prose-stone grow">
 		<Content />
 	</div>
 </div>
