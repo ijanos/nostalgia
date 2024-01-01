@@ -1,0 +1,42 @@
+---
+image: "./2009-12-21.png"
+---
+import W from '../../../components/WikipediaLink.astro';
+
+
+# 2009-12-21
+
+```
+machine: Dell Studio 1555
+OS: Windows 7
+resolution: 1366x768
+```
+
+My previous laptop was getting old and I got a good deal on a new Dell machine.
+I learned some lessons with this laptop.
+
+At this point I was using Arch Linux so I did my homework, I checked the Arch
+Wiki if this laptop is supported, it had a page and it said it is supported.
+What I didn't realize was that AMD/ATi GPU's power saving feature was not
+working on Linux. The machine did work but it was really hot and loud and the
+battery run out in 30 minutes when running Linux.
+
+I don't remember all the things I tried but finally I gave up and Installed
+Windows 7. By this time I was using Linux for everything and using Windows
+again felt backwards and I really wanted to keep using those tools. I converted
+the Arch Linux partition into a virtual machine image and started experimenting.
+
+I ended up with this weird thing, running a Windows native version of <W
+page="X_Window_System" text="X server"/> and starting the Linux programs in the
+virtual machine. This worked surprisingly well! I could keep using the Linux
+terminal even GUI apps. I think this setup is similar in spirit to how <W
+page="Windows_Subsystem_for_Linux#WSL_2" text="WSL2" /> works, that Microsoft
+introduced 10 years after this. It was a fun setup, CPU performance was good
+but it eat into memory. Even with the virtual machine running the laptop stayed
+cool and had okay battery life.
+
+
+Another lesson I learned was the resolution. I switched from a 4:3 ration to
+one with 16:9 and to a smaller pixel count. 1366x768 was popular in laptops
+around that time but after using this laptop I knew I will never get anything
+this small again.
