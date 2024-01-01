@@ -1,4 +1,4 @@
 ---
 const { page, text = page, lang="en" } = Astro.props;
 ---
-<a href={`https://${lang}.wikipedia.org/wiki/${ page }`}>{ text }</a>
+<a href={`https://${lang}.wikipedia.org/wiki/${ page }`} target="_blank">{ text }</a>
