@@ -8,15 +8,15 @@ const screenshots = await getCollection('screenshot');
 ---
 
 <Layout title="nostalgia">
-<main class="bg-[#C0C0C0] max-w-6xl m-auto flex flex-col gap-2 p-2 border-2 border-t-slate-100 border-l-slate-100 border-r-slate-500 border-b-slate-500">
-	<h1 class="bg-[#000080] text-white font-bold">N O S T A L G I A</h1>
-	<div>
+<main class="bg-[#C0C0C0] max-w-6xl m-auto flex flex-col gap-2 border-2 border-t-slate-100 border-l-slate-100 border-r-slate-500 border-b-slate-500">
+	<h1 class="bg-[#000080] text-white font-bold p-[2px]">💾 nostalgia.janosilles.com</h1>
+	<div class="prose">
 		Looking at old screenshots of mine fills me with nostalgia. Maybe someone else will find them interesting so
 		I'm making them public.
 		You may be interested in
 		my <a class="underline" href="https://github.com/ijanos/dotfiles/commit/7e7195d970324bf85d97822e485927c767152d05" target="_blank">dotfiles repo</a> which I maintain since 2010.
 	</div>
-	<div class="flex flex-col gap-2" id="gallery">
+	<div class="flex p-1 flex-col gap-2" id="gallery">
 		{ screenshots.map((screenshot) => <Card screenshot={ screenshot } />) }
 	</div>
 
