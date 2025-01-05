@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+
 interface Props {
   screenshot: CollectionEntry<'screenshot'>;
 }
@@ -12,7 +13,7 @@ const { Content } = await screenshot.render();
 		<a class="gallery" href={screenshot.data.image.src}
 		   data-pswp-width={screenshot.data.image.width}
 		   data-pswp-height={screenshot.data.image.height} >
-			<img src={screenshot.data.image.src} class="outline-dashed outline-1 transition ease-in-out hover:scale-105" loading="lazy" />
+			<img src={screenshot.data.image.src} class="outline-dashed outline-gray-500 outline-1 transition ease-in-out hover:scale-105" loading="lazy" />
 		</a>
 	</div>
 	<div class="basis-3/5 prose prose-stone grow prose-code:text-wrap">
