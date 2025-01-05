@@ -1,12 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
 
 interface Props {
   screenshot: CollectionEntry<'screenshot'>;
 }
 
 const { screenshot } = Astro.props;
-const { Content } = await screenshot.render();
+const { Content } = await render(screenshot);
 ---
 <div class="border-2 border-t-slate-100 border-l-slate-100 border-r-slate-500 border-b-slate-500 flex gap-2 flex-wrap p-1">
 	<div class="basis-2/5 grow">
