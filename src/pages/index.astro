@@ -5,15 +5,7 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 
 const screenshots = await getCollection('screenshot');
-screenshots.sort((s1, s2) => {
-	if (s1.filePath! < s2.filePath!) {
-		return -1;
-	};
-	if (s1.filePath! > s2.filePath!) {
-		return 1;
-	};
-	return 0;
-});
+screenshots.sort((s1, s2) => s1.filePath!.localeCompare(s2.filePath!));
 ---
 
 <Layout title="nostalgia">
