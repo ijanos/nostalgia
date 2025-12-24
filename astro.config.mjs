@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 
@@ -7,5 +7,8 @@ export default defineConfig({
   integrations: [mdx()],
   vite: {
     plugins: [tailwindcss()]
+  },
+  image: {
+    service: passthroughImageService()
   }
 });
