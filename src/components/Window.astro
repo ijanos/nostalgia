@@ -1,0 +1,78 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+
+interface Props {
+  screenshot: CollectionEntry<'screenshot'>;
+}
+
+const { screenshot } = Astro.props;
+const { Content } = await render(screenshot);
+---
+<div class="window m-2">
+  <div class="title-bar">
+    <div class="title-bar-text">Screenshot from 2002-04-20</div>
+  </div>
+  <div class="window-body">
+
+      <div class="flex flex-col gap-1">
+
+          <div class="flex flex-row gap-1">
+
+              <div class="field-border" style="padding: 2px">
+                  <a class="gallery" href={screenshot.data.image.src} data-pswp-width={screenshot.data.image.width} data-pswp-height={screenshot.data.image.height}>
+                    <img src={screenshot.data.image.src} class="" loading="lazy" />
+					</a>
+              </div>
+
+
+              <div class="sunken-panel" style="height: 120px; width: 240px;">
+                <table class="interactive w-full">
+                  <thead>
+                    <tr>
+                      <th>Detail</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Resolution</td>
+                      <td>800x600</td>
+                    </tr>
+                    <tr>
+                      <td>OS</td>
+                      <td>Windows 98</td>
+                    </tr>
+
+                    <tr>
+                        <td>CPU</td>
+                        <td> Pentium II</td>
+                    <tr>
+                        <td> OS </td>
+                        <td> Windows 98 </td>
+                    </tr>
+                    <tr>
+                        <td> form factor </td>
+                        <td> desktop PC </td>
+                    </tr>
+                    <tr>
+                     <td> resolution  </td>
+                     <td> 1024x768 </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+          </div>
+
+          <div class="field-border-disabled" style="padding: 8px">
+<Content />
+          </div>
+  </div>
+
+  </div>
+
+  <div class="status-bar">
+    <p class="status-bar-field">2002-04-20</p>
+    <p class="status-bar-field">Windows 98</p>
+  </div>
+</div>

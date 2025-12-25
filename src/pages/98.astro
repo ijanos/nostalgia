@@ -1,0 +1,49 @@
+---
+import "98.css";
+import "../styles/global.css";
+
+import { getCollection } from "astro:content";
+
+import Layout from '../layouts/Layout.astro';
+import Window from '../components/Window.astro';
+
+const screenshots = await getCollection('screenshot');
+screenshots.sort((s1, s2) => s1.filePath!.localeCompare(s2.filePath!));
+
+---
+
+<Layout title="nostalgia">
+    <main id="gallery" class="mt-2 max-w-6xl m-auto flex flex-col gap-2">
+
+  <div class="window w-md m-2" >
+    <div class="title-bar">
+      <div class="title-bar-text">
+          nostalgia.janosilles.com
+      </div>
+    </div>
+    <div class="window-body">
+        <p>
+		Looking at old screenshots of mine fills me with nostalgia. Maybe someone else will find them interesting so
+		I'm making them public.
+		You may be interested in
+		my <a class="underline" href="https://github.com/ijanos/dotfiles/commit/7e7195d970324bf85d97822e485927c767152d05" target="_blank">dotfiles repo</a> which I maintain since 2010.
+	</p>
+    </div>
+  </div>
+
+  { screenshots.map((screenshot) => <Window screenshot={ screenshot } />) }
+
+    </main>
+</Layout>
+
+<script>
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
+
+const lightbox = new PhotoSwipeLightbox({
+  gallery: '#gallery',
+  children: 'a.gallery',
+  pswpModule: () => import('photoswipe')
+});
+lightbox.init();
+</script>
