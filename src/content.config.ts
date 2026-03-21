@@ -4,6 +4,7 @@ import { glob } from 'astro/loaders';
 const screenshotCollection = defineCollection({
   loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/screenshot" }),
   schema: ({image}) => z.object({
+    cpu: z.string().optional(),
     image: image(),
   }),
 });
