@@ -1,3 +1,7 @@
+# editor configs
+.vscode
+.zed
+
 # build output
 dist/
 
