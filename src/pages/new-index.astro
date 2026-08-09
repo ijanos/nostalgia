@@ -1,0 +1,151 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from '../layouts/Layout.astro';
+import RetroCard from '../components/RetroCard.astro';
+
+const screenshots = await getCollection('screenshot');
+screenshots.sort((s1, s2) => s1.filePath!.localeCompare(s2.filePath!));
+---
+
+<Layout title="nostalgia">
+<main class="relative min-h-screen overflow-x-hidden">
+
+	<!-- CRT overlays -->
+	<div class="scanlines pointer-events-none fixed inset-0 z-[2000] opacity-20" aria-hidden="true"></div>
+	<div class="pointer-events-none fixed inset-0 z-[2000]" style="background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.6) 100%)" aria-hidden="true"></div>
+
+	<header class="sticky top-0 z-40 border-b border-white/10 bg-black/50 backdrop-blur-md">
+		<div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+			<a href="/" class="flex items-center gap-3 font-mono text-sm tracking-widest text-green-400 sm:text-base">
+				<span aria-hidden="true">💾</span>
+				<span>nostalgia.janosilles.com</span>
+				<span class="blink inline-block h-4 w-2.5 bg-green-400" aria-hidden="true"></span>
+			</a>
+			<a
+				href="https://github.com/ijanos/nostalgia/"
+				target="_blank"
+				rel="noopener"
+				class="rounded border border-white/10 bg-white/5 p-1.5 opacity-80 transition hover:border-cyan-400/50 hover:opacity-100"
+				aria-label="Source code on GitHub"
+			>
+				<img class="h-5 invert" src="github-mark.svg" alt="GitHub" />
+			</a>
+		</div>
+	</header>
+
+	<section class="mx-auto max-w-6xl px-4 pt-10">
+		<div class="overflow-hidden rounded-xl border border-white/10 bg-black/40 shadow-[0_4px_40px_rgba(0,0,0,0.5)] backdrop-blur-md">
+			<div class="flex items-center gap-2 border-b border-white/10 bg-white/5 px-4 py-2.5">
+				<span class="h-3 w-3 rounded-full bg-[#ff5f57]" aria-hidden="true"></span>
+				<span class="h-3 w-3 rounded-full bg-[#febc2e]" aria-hidden="true"></span>
+				<span class="h-3 w-3 rounded-full bg-[#28c840]" aria-hidden="true"></span>
+				<span class="ml-3 font-mono text-xs tracking-widest text-neutral-500">~/nostalgia — zsh</span>
+			</div>
+			<div class="space-y-4 p-6 font-mono text-sm leading-relaxed text-neutral-300">
+				<p class="text-neutral-500"><span class="mr-2 text-green-400">$</span>cat intro.txt</p>
+				<p>
+					Looking at old screenshots of mine fills me with nostalgia. Maybe someone else will find them interesting so
+					I'm making them public.
+				</p>
+				<p>
+					You may be interested in
+					my <a class="text-cyan-300 underline decoration-dotted underline-offset-4 transition hover:text-cyan-200" href="https://github.com/ijanos/dotfiles/commit/7e7195d970324bf85d97822e485927c767152d05" target="_blank" rel="noopener">dotfiles repo</a> which I maintain since 2010.
+				</p>
+				<p class="text-neutral-500"><span class="mr-2 text-green-400">$</span><span class="blink inline-block h-3.5 w-2 bg-green-400" aria-hidden="true"></span></p>
+			</div>
+		</div>
+	</section>
+
+	<div class="mt-10 overflow-hidden border-y border-cyan-400/20 bg-cyan-400/5 py-2" aria-hidden="true">
+		<div class="marquee flex w-max whitespace-nowrap font-mono text-[11px] tracking-[0.35em] text-cyan-300/60">
+			<span class="px-8">RETRO SCREENSHOTS SINCE 2000 ✦ 1998–2023 ✦ PIXELS &amp; PROMPTS ✦ MADE WITH NOSTALGIA ✦</span>
+			<span class="px-8">RETRO SCREENSHOTS SINCE 2000 ✦ 1998–2023 ✦ PIXELS &amp; PROMPTS ✦ MADE WITH NOSTALGIA ✦</span>
+		</div>
+	</div>
+
+	<section id="gallery" class="mx-auto max-w-6xl px-4 pb-20 pt-10">
+		<h2 class="mb-8 font-mono text-xs tracking-[0.3em] text-cyan-400">
+			<span class="text-green-400">&gt;</span> gallery — {screenshots.length} entries
+		</h2>
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+			{ screenshots.map((screenshot) => <RetroCard screenshot={ screenshot } />) }
+		</div>
+	</section>
+
+</main>
+</Layout>
+
+<style is:global>
+	body {
+		background-color: #0b0b12 !important;
+		background-image:
+			radial-gradient(ellipse at 15% -10%, rgba(0, 240, 255, 0.09), transparent 55%),
+			radial-gradient(ellipse at 85% 5%, rgba(255, 46, 166, 0.07), transparent 55%),
+			linear-gradient(160deg, #0b0b12 0%, #0e0b1a 50%, #140a19 100%);
+		background-attachment: fixed;
+		color: #d4d4d8;
+		font-family: ui-monospace, 'Cascadia Code', 'JetBrains Mono', 'Fira Code', Menlo, Consolas, 'Courier New', monospace;
+	}
+
+	footer {
+		color: #52525b !important;
+	}
+
+	::selection {
+		background: #00f0ff;
+		color: #000;
+	}
+
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: #0b0b12;
+	}
+	::-webkit-scrollbar-thumb {
+		background: linear-gradient(180deg, #00f0ff, #ff2ea6);
+		border-radius: 5px;
+		border: 2px solid #0b0b12;
+	}
+
+	.scanlines {
+		background-image: repeating-linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 0.35) 0px,
+			rgba(0, 0, 0, 0.35) 1px,
+			transparent 1px,
+			transparent 3px
+		);
+	}
+
+	.blink {
+		animation: blink 1.1s steps(2, start) infinite;
+	}
+	@keyframes blink {
+		50% { opacity: 0; }
+	}
+
+	.marquee {
+		animation: marquee 28s linear infinite;
+	}
+	@keyframes marquee {
+		to { transform: translateX(-50%); }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.blink, .marquee { animation: none; }
+	}
+</style>
+
+<script>
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
+
+const lightbox = new PhotoSwipeLightbox({
+  gallery: '#gallery',
+  children: 'a.gallery',
+  pswpModule: () => import('photoswipe')
+});
+lightbox.init();
+</script>
